@@ -15,10 +15,7 @@ public class BooksController {
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String addBooks() {
-
         return "books/new";
     }
-
-
 
 }

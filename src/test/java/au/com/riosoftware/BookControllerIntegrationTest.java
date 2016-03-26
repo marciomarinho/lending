@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Lending.class)
 @WebAppConfiguration
-public class BooksControllerIntegrationTest {
+public class BookControllerIntegrationTest {
 
     private MockMvc mockMvc;
 

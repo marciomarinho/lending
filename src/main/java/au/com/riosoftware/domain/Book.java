@@ -8,19 +8,15 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Books {
+@Table(name = "books")
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "Name_Book")
-    private String nameBook;
+    private String name;
 
-    @Column(name = "Author_Name")
-    private String authorName;
+    private String author;
 
-    public Books(){
-
-    }
 }
