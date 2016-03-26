@@ -35,14 +35,14 @@ public class BooksControllerIntegrationTest {
     public void showAddBookForm() throws Exception {
         mockMvc.perform(get("/books/new"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/books/new"));
+                .andExpect(view().name("books/new"));
     }
 
     @Test
     public void showBooksListForm() throws Exception {
         mockMvc.perform(get("/books"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/books/list"));
+                .andExpect(view().name("books/list"));
     }
 
 }
