@@ -44,4 +44,6 @@ public class LendingControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("lendings/list"));
     }
+
+
 }

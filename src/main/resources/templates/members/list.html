@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html layout:decorator="layout">
 
-</body>
+<div layout:fragment="content">
+
+    <h1 align="center">All Members</h1>
+
+    <a class="btn btn-primary" href="/members/new">Add new book</a>
+
+
+    <table class="table table-striped">
+        <thead>
+
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Date of Birth</th>
+
+        </tr>
+
+        </thead>
+        <tbody>
+
+        <tr th:each="member : ${members}">
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.dateOfBirth}"></td>
+            <td>
+                <a th:href="@{'/members/{id}/delete'(id=${member.id})}" class="delete" th:attr="name=${member.name}">
+                            <span class="fa-stack">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </span>
+                </a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
 </html>
