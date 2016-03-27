@@ -18,7 +18,8 @@ public class BooksController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    //TODO: You always have to specify which route under you're going to.
+    @RequestMapping(value="", method = RequestMethod.GET)
     public String listBooks(Model model) {
         model.addAttribute("books", bookService.getAll());
         return "books/list";
@@ -36,7 +37,8 @@ public class BooksController {
         return "redirect:/books";
     }
 
-    @RequestMapping(value = "{id}/delete", method = RequestMethod.GET)
+    //TODO: You missed a slash before {id}
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String delete(@PathVariable long id) {
          bookService.delete(id);
         return "redirect:/books";

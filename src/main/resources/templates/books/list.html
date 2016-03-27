@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      layout:decorator="layout">
-
+<html layout:decorator="layout">
 
 <div layout:fragment="content">
 
     <h1 align="center">All books</h1>
 
-    <a class="btn btn-primary" href="/book/new">Add new book</a>
+    <a class="btn btn-primary" href="/books/new">Add new book</a>
 
 
     <table class="table table-striped">
@@ -28,10 +25,10 @@
             <td th:text="${book.name}"></td>
             <td th:text="${book.author}"></td>
             <td>
-                <a th:href="@{'/books/{id}/delete'(id=${book.id})}" class="delete" th:attr="name=${book}">
-                        <span class="fa-stack">
-                            <i class="glyphicon glyphicon-trash"></i>
-                        </span>
+                <a th:href="@{'/books/{id}/delete'(id=${book.id})}" class="delete" th:attr="name=${book.name}">
+                            <span class="fa-stack">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </span>
                 </a>
             </td>
         </tr>

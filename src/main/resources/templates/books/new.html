@@ -1,23 +1,20 @@
-<html layout:decorator="layout"  xmlns:th="http://www.thymeleaf.org">
+<!--Do not use tables, unless you want to show a table.-->
+<html layout:decorator="layout">
 <div layout:fragment="content">
-    <form action="#" th:action="@{/book/createBook}" th:object="${book}" method="post">
-        <table class="table table-striped">
-            <tr>
-                <td>Name: </td>
-                <td><input type="text" th:field="*{name}"/></td>
+    <form action="#" th:action="@{/books/create}" th:object="${book}" method="post" role="form">
 
-            </tr>
-            <tr>
-                <td>Author: </td>
-                <td><input type="text" th:field="*{author}"/></td>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" th:field="*{name}"/>
+        </div>
 
-            </tr>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input id="author" type="text" th:field="*{author}"/>
+        </div>
 
-
-            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-        </table>
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
 
     </form>
-
 </div>
 </html>
