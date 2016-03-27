@@ -3,6 +3,7 @@ package au.com.riosoftware;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = LendingApplication.class)
 @WebAppConfiguration
-public class MemberControllerIntegrationTest {
+public class LendingControllerIntegrationTest {
 
     private MockMvc mockMvc;
 
@@ -26,21 +27,21 @@ public class MemberControllerIntegrationTest {
     private WebApplicationContext webApplicationContext;
 
     @Before
-    public void setUp() {
+    public void setUp(){
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
     @Test
-    public void showAddMemberForm() throws Exception {
-        mockMvc.perform(get("/members/new"))
+    public void showAddLendingForm() throws Exception{
+        mockMvc.perform(get("/lendings/new"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("members/new"));
+                .andExpect(view().name("/lendings/new"));
     }
 
     @Test
-    public void showMemberListForm() throws Exception {
-        mockMvc.perform(get("/members"))
+    public void showListLendingForm() throws Exception{
+        mockMvc.perform(get("/lendings"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("members/list"));
+                .andExpect(view().name("lendings/list"));
     }
 }

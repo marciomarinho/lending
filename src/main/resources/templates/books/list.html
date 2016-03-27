@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
 
-</body>
+
+<div layout:fragment="content">
+
+    <h1 align="center">All books</h1>
+
+    <a class="btn btn-primary" href="/book/new">Add new book</a>
+
+
+    <table class="table table-striped">
+        <thead>
+
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Author</th>
+
+        </tr>
+
+        </thead>
+        <tbody>
+
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.name}"></td>
+            <td th:text="${book.author}"></td>
+            <td>
+                <a th:href="@{'/books/{id}/delete'(id=${book.id})}" class="delete" th:attr="name=${book}">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </span>
+                </a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
 </html>

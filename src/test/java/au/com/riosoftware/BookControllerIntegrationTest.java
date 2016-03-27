@@ -12,12 +12,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Lending.class)
+@SpringApplicationConfiguration(classes = LendingApplication.class)
 @WebAppConfiguration
 public class BookControllerIntegrationTest {
 
@@ -43,6 +44,20 @@ public class BookControllerIntegrationTest {
         mockMvc.perform(get("/books"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("books/list"));
+    }
+
+    @Test
+    public void showDeleteBookForm() throws Exception{
+        mockMvc.perform(get("/books/{id}/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/books"));
+    }
+
+    @Test
+    public void showCreateBookForm() throws Exception{
+        mockMvc.perform(post("/books/create"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/books"));
     }
 
 }
